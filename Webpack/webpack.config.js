@@ -9,9 +9,20 @@ module.exports={
 	}, 
 	plugins:[
 		new HtmlWebpackPlugin({
-			filename:'Htmlplugin.html',
-			template:'src/HtmlTemplate.html'
+			filename:'index.html',
+			template:'src/index.html'
 		})
 	],
+	module:{
+		rules:[{
+			test:/\.js$/,//匹配的文件类型
+			use:[{
+				loader:'babel-loader',
+				options:{
+					presets:['react']
+				}
+			}]
+		}]
+	},
 	mode:"development"  //打包模式：development还是production(压缩的)(webpack4.0新增的)
 }

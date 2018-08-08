@@ -1,4 +1,4 @@
-1.基本配置
+﻿1.基本配置
 	初始化
 		npm init -y
 	安装依赖
@@ -29,5 +29,16 @@
 				template:''，以什么html文件为模板进行打包
 			})
 		]
-
-	
+3.loader webpack用来预处理模块的，在一个模块被引入之前,会预先使用loader处理模块的内容
+		在webpack.config.js里的module.exports里加个字段
+		module:{
+			rules:[{
+				test:/\.js$/,				//匹配的文件类型
+				use:[{						//选择loader
+					loader:'babel-loader',
+					options:{	
+						presets:['react']  //编译规则
+					}
+				}]
+			}]
+		}
