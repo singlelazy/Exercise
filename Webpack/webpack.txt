@@ -1,19 +1,33 @@
-初始化
-	npm init -y
-安装依赖
-	npm i -D webpack
-	npm i -D webpack-cli(webpack4.0新增)
-创建命令
-	在package.json里script下
-	"dev":"webpack" 	//默认通过查找webpack.config.js的文件进行打包 'webpack --config 自己取得配置文件名'
-webpack.config.js
-	const path=require('path')
+1.基本配置
+	初始化
+		npm init -y
+	安装依赖
+		npm i -D webpack
+		npm i -D webpack-cli(webpack4.0新增)
+	创建命令
+		在package.json里script下
+		"dev":"webpack" 	//默认通过查找webpack.config.js的文件进行打包 'webpack --config 自己取得配置文件名'
+	webpack.config.js
+		const path=require('path')
+		
+		module.exports={
+			entry:'', 	//入口文件
+			output:{ 	//输出
+				path:path.resolve(_dirname,'dist')  //_dirname表示当前文件目录的绝对路径,'dist'表示打包后的位置
+				filename:'main.js'  				//打包后的文件名
+			},
+			mode:'development'('production')		//打包模式：development还是production(webpack4.0新增的)
+		}
+2.插件
+	1.html-webpack-plugin 创建html文件
+	配置
+		const HtmlWebpackPlugin=require('html-webpack-plugin')
+		在webpack.config.js里的module.exports里加个字段
+		plugins:[
+			new  HtmlWebpackPlugin({
+				filename:'',打包后的html文件名
+				template:''，以什么html文件为模板进行打包
+			})
+		]
+
 	
-	module.exports={
-		entry:'', 	//入口文件
-		output:{ 	//输出
-			path:path.resolve(_dirname,'dist')  //_dirname表示当前文件目录的绝对路径,'dist'表示打包后的位置
-			filename:'main.js'  				//打包后的文件名
-		},
-		mode:'development'('production')		//打包模式：development还是production(webpack4.0新增的)
-	}
