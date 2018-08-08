@@ -30,7 +30,10 @@
 			})
 		]
 3.loader webpack用来预处理模块的，在一个模块被引入之前,会预先使用loader处理模块的内容
+	配置
 		在webpack.config.js里的module.exports里加个字段
+		依赖
+			react react-dom babel-loader babel-core babel-preset-react
 		module:{
 			rules:[{
 				test:/\.js$/,				//匹配的文件类型
@@ -42,3 +45,14 @@
 				}]
 			}]
 		}
+4.devserver 使项目可以运行在服务器上(运行时，会先打包)
+	依赖
+		webpack-dev-server
+	配置
+		在webpack.config.js里的module.exports里加个字段
+		devServer:{    //服务器配置
+			open:true,  //自动打开浏览器
+			port:9000	//切换端口
+		}
+	
+	

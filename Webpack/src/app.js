@@ -2,6 +2,6 @@ import React from 'react'
 import ReactDom from 'react-dom'
 
 ReactDom.render(
-	<div>react</div>,
+	<div>react test</div>,
 	document.getElementById('root')	
 );

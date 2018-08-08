@@ -7,13 +7,13 @@ module.exports={
 		path:path.resolve(__dirname,'dist'), //__dirname表示当前文件目录的绝对路径,'dist'表示打包后的位置
 		filename:'app.js' //打包后的文件名
 	}, 
-	plugins:[
+	plugins:[ 			//插件配置
 		new HtmlWebpackPlugin({
 			filename:'index.html',
 			template:'src/index.html'
 		})
 	],
-	module:{
+	module:{			//loaer配置
 		rules:[{
 			test:/\.js$/,//匹配的文件类型
 			use:[{
@@ -23,6 +23,10 @@ module.exports={
 				}
 			}]
 		}]
+	},
+	devServer:{    //服务器配置
+		open:true,  //自动打开浏览器
+		port:9000	//切换端口
 	},
 	mode:"development"  //打包模式：development还是production(压缩的)(webpack4.0新增的)
 }
