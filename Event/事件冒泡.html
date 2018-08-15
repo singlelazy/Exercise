@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{padding: 40px;}
+		#div1{background: red;}
+		#div2{background: green;}
+		#div3{background: blue;}
+	</style>
+
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div3>
+		</div>
+	</div>
+</body>
+<script>
+	// window.onload=function(){
+		var oDiv1=document.getElementById('div1');
+		var oDiv2=document.getElementById('div2');
+		var oDiv3=document.getElementById('div3');
+		function fn1(){
+			alert(this.id);
+		}
+		
+		oDiv1.onclick=fn1;	
+		oDiv2.onclick=fn1;	
+		oDiv3.onclick=fn1;	
+	//}
+</script>
+</html>
