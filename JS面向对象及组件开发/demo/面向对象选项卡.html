@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象选项卡</title>
+	<style type="text/css">
+		#tab div,#tab2 div{width: 200px; height: 200px; border:1px solid #000; display: none;}
+		#tab .active,#tab2 .active{background: red;}
+	</style>
+	<script type="text/javascript">
+		var oParent=null;
+		var oDiv=null;
+		var aInput=null;
+		var tmp=null;
+		window.onload=function(){
+			//传统写法
+	/*		var oParent=document.getElementById('tab');
+			var oDiv=oParent.querySelectorAll('div');
+			var aInput=oParent.querySelectorAll('input');
+			var tmp=0;
+			for(let i=0;i<aInput.length;i++){
+				aInput[i].onclick=function(){
+					aInput[tmp].className="";
+					oDiv[tmp].style.display='none';
+					tmp=i;
+					oDiv[i].style.display="block";
+					this.className='active';
+				}
+			}*/
+			var t1=new Fntab('#tab','div','input');
+			var t2=new Fntab('#tab2','div','input');
+			t1.init();
+			t2.init();
+			t2.autoplay();
+		}
+
+		function Fntab(parent,div,btn){
+			this.oParent=document.querySelectorAll(parent)[0];
+			this.oDiv=this.oParent.querySelectorAll(div);
+			this.aInput=this.oParent.querySelectorAll(btn);
+			this.tmp=0;
+		}
+		Fntab.prototype.init=function(){
+				var This=this;
+			for(let i=0;i<this.aInput.length;i++){
+				this.aInput[i].index=i;
+				this.aInput[i].onclick=function(){
+					This.change(this)
+				}
+			}
+		}
+		Fntab.prototype.change=function(This){
+			this.aInput[this.tmp].className="";
+			this.oDiv[this.tmp].style.display='none';
+			this.tmp=This.index;
+			this.oDiv[This.index].style.display="block";
+			this.aInput[This.index].className='active';
+			console.log(this)
+		}
+		Fntab.prototype.autoplay=function(){
+			setInterval(function(){
+				this.aInput[this.tmp].className="";
+				this.oDiv[this.tmp].style.display='none';
+				this.tmp<this.aInput.length-1 ? this.tmp++ :this.tmp=0
+				this.oDiv[this.tmp].style.display="block";
+				this.aInput[this.tmp].className='active';
+			}.bind(this),1000)
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="tab">
+		<input class="active" type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3">
+		<div style="display:block">1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+	<div id="tab2">
+		<input class="active" type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3">
+		<div style="display:block">1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+</body>
+</html>
