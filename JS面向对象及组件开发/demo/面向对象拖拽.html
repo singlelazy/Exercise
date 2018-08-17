@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象拖拽</title>
+	<style type="text/css">
+		#drag{width: 100px; height: 100px; background: red;position: relative;}
+	</style>
+	<script type="text/javascript">
+		var oDiv=null;
+		window.onload=function(){
+			//通用写法
+			/*oDiv=document.querySelector('#drag');
+			oDiv.onmousedown=function(ev){
+				ev=ev||window.ev;
+				var disX=ev.clientX-this.offsetLeft;
+				var disY=ev.clientY-this.offsetTop;
+				oDiv.onmousemove=function(ev){
+					ev=ev||window.event;
+					oDiv.style.left=ev.clientX-disX+"px";
+					oDiv.style.top=ev.clientY-disY+"px";
+				}
+				oDiv.onmouseup=function(){
+					document.onmousedown=null;
+					document.onmousemove=null;
+				}
+				return false
+			}*/
+			// var t1=new Drag('#drag');
+			// t1.init();
+
+		}
+		function Drag(div){
+			this.oDiv=document.querySelector(div);
+		}
+		Drag.prototype.init=function(){
+			var This=this
+			this.oDiv.onmousedown=function(ev){
+				var ev=ev || event
+				This.mousedown(ev);
+				This.mouseup();
+				return false
+			};
+		}
+		Drag.prototype.mousedown=function(ev){
+			var This=this;
+			this.oDiv.disX=ev.clientX-this.oDiv.offsetLeft;
+			this.oDiv.disY=ev.clientY-this.oDiv.offsetTop;
+			this.oDiv.onmousemove=function(ev){
+				var ev=ev || event
+				This.mousemove(ev);
+			};
+		}
+		Drag.prototype.mousemove=function(ev){
+			this.oDiv.style.left=ev.clientX-this.oDiv.disX+"px";
+			this.oDiv.style.top=ev.clientY-this.oDiv.disY+"px";
+		}
+		Drag.prototype.mouseup=function(){
+			this.mousedown=null;
+			this.mouseup=null;
+		}
+	</script>
+</head>
+<body>
+	<div id="drag"></div>
+</body>
+</html>
