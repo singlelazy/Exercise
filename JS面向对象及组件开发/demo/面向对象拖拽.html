@@ -21,8 +21,8 @@
 					oDiv.style.top=ev.clientY-disY+"px";
 				}
 				oDiv.onmouseup=function(){
-					document.onmousedown=null;
 					document.onmousemove=null;
+					document.onmouseup=null;
 				}
 				return false
 			}*/
@@ -56,8 +56,8 @@
 			this.oDiv.style.top=ev.clientY-this.oDiv.disY+"px";
 		}
 		Drag.prototype.mouseup=function(){
-			this.mousedown=null;
-			this.mouseup=null;
+			this.oDiv.mousemove=null;
+			this.oDiv.mouseup=null;
 		}
 	</script>
 </head>

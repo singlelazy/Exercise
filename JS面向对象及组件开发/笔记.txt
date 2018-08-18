@@ -68,5 +68,5 @@
 	子类不影响父类,子类可以继承父类的一些功能(代码复用)
 	对象的拷贝
 		- for in
-		- JSON.parse(JSON.stringify(obj))
+		- JSON.parse(JSON.stringify(obj)) (对象和数组)
 
