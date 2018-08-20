@@ -1,0 +1,23 @@
+1.减少Dom操作
+	- 节点克隆 
+		cloneNode
+	- 访问元素集合 
+		尽量用局部变量
+	- 元素节点
+		尽量用只获取元素的节点方法
+	- 选择器API
+		利用querySelector、querySelectorAll
+2.Dom与浏览器
+	- 重排:改变页面的内容
+	- 重绘:浏览器显示内容
+	- 添加顺序:
+		尽量在appendChild前添加操作
+	- 合并Dom操作
+		利用cssText
+	- 缓存布局信息
+	- 文档碎片
+		createDocumentFragment
+3.Dom与事件
+	- 事件委托
+4.Dom与前端模板
+	- 能更好的对逻辑和视图分离，MVC架构的基础	
