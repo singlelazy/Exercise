@@ -88,4 +88,52 @@
 	表示独一无二的值
 	接收一个字符串作为参数，表示对Symbol的描述，主要是为了在控制台显示，或者转换字符串的时候，比较容易区分
 	不能被for in遍历，但是可以通过Object.getOwnPropertySymbols方法获得一个对象的所有Symbol属性
+9.内置对象的扩展
+	字符串扩展
+		- ``				模板字符串	
+		- repeat			重复字符串
+		- includes			是否包含，返回布尔值 startsWith 开头是否包含 endsWith 结尾是否包含
+	数组的扩展
+		- Array.from()		将类数组转化为数组
+		- Array.find()		在数组里查找符合条件的元素，如果有返回该元素，如果没有，返回undefined
+		- Array.findIndex() 在数组里查找符合条件的元素，如果有返回该元素的下标，如果没有，返回-1
+		- Array.fill()		用fill里的字符对数组里的元素进行替换，可添加参数起始位置和结束位置	
+	对象的扩展
+		- 对象的简洁写法		如果对象的key值和value值相等，只写一个，如果key后面是函数，可直接key(){}
+		- Object.is()		看是否长得一样，返回布尔值
+		- Object.assign()	用于对象的合并，将原对象的所有可枚举属性，复制到目标属性
+	函数的拓展
+		- 函数参数指定默认值
+		- 函数的rest参数
+		- 箭头函数
+			箭头函数没有自己的this对象，所以在使用的过程中，其内部的this就是定义时所在环境的对象，而不是使用时所在环境的对象不能给箭头函数使用call apply bind 去改变其内部的this指向
+			箭头函数体内没有arguments对象，如果要用，可以用rest参数代替
+			不可以当作构造函数，不可以使用new命令，否则会抛出一个错误
+			不可以用作Generator函数
+10.Promise
+		promise[[PromiseStatus]]状态
+			-pending:初始状态,既不是成功也不是失败
+			-fullfilled/resolve：操作成功
+			-reject:操作失败
+		new	Promise(function(resolve,reject){
+			//resolve函数:调用该函数时,将PromiseStatus改为resolve
+			//reject函数:调用该函数时,将PromiseStatus改为reject
+		})
+		then() 方法返回一个  Promise 它最多需要有两个参数：Promise 的成功和失败情况的回调函数。
+		then函数执行后会返回一个新的Promise对象	
+			-如果then没有传入处理函数,那么会返回一个继承了上一个处理状态的Promise对象
+			-如果then传入了处理函数,那么默认返回一个fullfilled/resolve状态的Promise对象
+			-如果then传入了处理函数，通过处理函数显示的return了一个新的对象，那么返回这个显示的Promise对象
+		缺点：不容易解决中途退出
+			.catch 也会返回一个默认成功的Promise对象
+			可以捕获catch之前的Promise Chain中的任一错误(如果Promise Chain中的then没有处理的话)
+		多任务处理
+			promise.all(iterable)包含多个Promise的迭代对象,比如数组,当所有任务都做完才开始执行
+			promise.race(iterable)包含多个Promise的迭代对象,比如数组,首个任务做完就开始执行
+		promise.reject()/resolve()方法。返回一个reject状态的Promise对象
+		传参
+			Promise.resolve(promise)	直接返回promise参数的Promise对象_
+			Promise.resolve(thenable)	返回thenable对象,一个包含then方法的对象_
+		await等待后续promise执行，并拿到执行结果
+		await必须在async函数里才能有用
 
