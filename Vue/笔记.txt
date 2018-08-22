@@ -1,0 +1,30 @@
+1.Vue中的两个核心点
+	- 响应式的数据绑定
+	- 组合的视图组件
+2.虚拟DOM
+	利用在内存中生成与真实Dom对应的数据结构称之为虚拟Dom
+3.MVVM设计模式
+	- M  Model数据模型
+	- V  View视图模板
+	- VM View-Model视图模式
+4.渲染
+	- 声明式渲染
+		只需要声明在哪里(where)做什么(what)，则无需关心如何实现(how)
+	- 命令式渲染
+		需要以具体代码表达在哪里(where)做什么(what),如何实现(how)
+5.响应式原理
+	- 把一个普通的Javascript对象传给Vue实例的data选项
+	  Vue将遍历此对象的所有属性，并使用Object.defineProperty把这些属性全部转为getter/setter
+	  Vue内部会对数据进行劫持操作，进行追踪依赖，在属性被访问和修改时通知变化
+	- 语法Object.defineProperty(obj,prop,descriptor)
+		obj为属性对象，prop要定义的属性名称，descriptor将被定义或修改的属性描述符
+		- 数据描述
+			configurable 是否可以删除目标属性，默认false
+			enumerable	 此属性是否可以被枚举，默认false
+			value		 该属性对应的值，默认undefined
+			writable	 属性的值是否可以被重写，默认false
+		- 访问器描述
+			getter是一种获得属性值的方法
+			setter是一种设置属性值的方法
+			可以写configurable，enumerable
+			不能写value，writable

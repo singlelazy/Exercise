@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input id="text" type="text">
+		<p id="news"></p>
+	</div>
+</body>
+<script type="text/javascript">
+	var data={
+		title:'新闻',
+		list:['歌手','歌手','歌手']
+	}
+	var text=document.getElementById('text')
+	var news=document.getElementById('news')
+	observer(data)
+	//初始化
+	text.value=data.title
+	news.innerHTML=data.title
+	text.addEventListener('input',function(){
+		data.title=this.value
+	})
+	//属性劫持
+	function observer(obj){
+		Object.keys(obj).forEach((item)=>{
+			defineReactive(obj,item,data[item])
+		})
+	}
+	function defineReactive(obj,key,value){
+		Object.defineProperty(obj,key,{
+			get(){
+				console.log('get了')
+				return value
+			},
+			set(newValue){
+				console.log('set了')
+				text.value=newValue
+				news.innerHTML=newValue
+			}
+		})
+	}
+/*	Object.defineProperty(data,'title',{
+		get(){
+			console.log(1)
+			return '新的值'
+		},
+		set(value){
+			console.log(value)
+		}
+	})
+	console.log(data.title)
+	data.title='急急急'*/
+</script>
+</html>
