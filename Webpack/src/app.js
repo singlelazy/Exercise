@@ -1,7 +1,10 @@
-import React from 'react'
-import ReactDom from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './main.css'
+import './app.css'
 
-ReactDom.render(
-	<div>react test</div>,
-	document.getElementById('root')	
-);
+
+ReactDOM.render(
+	<div className="ret">React</div>,
+	document.getElementById('root')
+)

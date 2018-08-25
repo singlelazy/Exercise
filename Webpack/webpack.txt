@@ -1,4 +1,4 @@
-﻿1.基本配置
+1.基本配置
 	初始化
 		npm init -y
 	安装依赖
@@ -54,5 +54,6 @@
 			open:true,  //自动打开浏览器
 			port:9000	//切换端口
 		}
-	
-	
+5.引入css
+	style-loader 插入style-loaders
+	css-loader
