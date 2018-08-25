@@ -30,7 +30,27 @@ module.exports={
 			//处理CSS文件中出现的URL，会自动帮你引入里面重要的模块
 			{
 				test:/\.css$/,
-				use:['style-loader','css-loader']
+				use:['style-loader',
+					{
+						loader:'css-loader',
+						options:{
+							modules:true,
+							localIdentName:'[path]-[name]-[local]-[hash:base64:6]'//限制字符为6个
+						}
+					}
+				],
+				exclude:[  //不包括文件
+					path.resolve(__dirname,'node_modules'),
+					path.resolve(__dirname,'./src/common/')
+				]
+			},
+			{
+				test:/\.css$/,
+				use:['style-loader','css-loader'],
+				include:[  //包括文件
+					path.resolve(__dirname,'node_modules'),
+					path.resolve(__dirname,'./src/common/')
+				]
 			},
 			//file-loader:
 			//	1.把你的资源移动到输出目录

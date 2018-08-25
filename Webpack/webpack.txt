@@ -29,7 +29,7 @@
 				template:''，以什么html文件为模板进行打包
 			})
 		]
-3.loader webpack用来预处理模块的，在一个模块被引入之前,会预先使用loader处理模块的内容
+3.loader webpack用来预处理模块的，在一个模块被引入之前,会预先使用loader处理模块的内容(处理顺序，从右往左)
 	配置
 		在webpack.config.js里的module.exports里加个字段
 		依赖
@@ -64,3 +64,15 @@
 	url-loader  会编码成浏览器能识别的base64位图片，减少网络请求，但是图片过大，编码过大
 7.引入字体
 	font-awesome 字体库
+8.CSS模块化
+	use:['style-loader',
+			{
+				loader:'css-loader',
+				options:{
+					modules:true //模块化开启
+				}
+			}
+		]
+	exclude:[  //不包括文件
+		path.resolve(_dirname,'node_modules')
+	]
