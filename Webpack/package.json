@@ -17,6 +17,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
+    "font-awesome": "^4.7.0",
     "style-loader": "^0.22.1",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.1",

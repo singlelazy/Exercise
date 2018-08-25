@@ -55,8 +55,12 @@
 			port:9000	//切换端口
 		}
 5.引入css
-	style-loader 插入style-loaders
-	css-loader
+	style-loader 插入style
+	css-loader 处理CSS文件中出现的URL，会自动帮你引入里面重要的模块
 6.引入图片
 	file-loader
+		1.把你的资源移动到输出目录
+		2.返回最终引入资源的URL
 	url-loader  会编码成浏览器能识别的base64位图片，减少网络请求，但是图片过大，编码过大
+7.引入字体
+	font-awesome 字体库
