@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3D方块</title>
+		<style>
+			*{margin: 0; padding: 0;list-style-type: none;}
+			.wrap{width: 100px; height:100px; padding: 100px; border:2px solid #000; margin: 200px auto;perspective: 300px; }
+			.wrap ul{ position: relative; transform-style: preserve-3d; transition:2s;}
+			.wrap ul li{width: 100px; height: 100px; position: absolute;font:50px/100px arial; text-align: center;}
+			.wrap ul li:nth-of-type(1){top: -100px; left: 0; background:#00CC99; transform-origin: bottom; transform: rotateX(90deg);}
+			.wrap ul li:nth-of-type(2){top: 0; left: -100px; background:#006666;transform-origin: right; transform:rotateY(-90deg);}
+			.wrap ul li:nth-of-type(3){top: 0; left: 100px; background:#55A532;transform-origin: left; transform:rotateY(90deg);}
+			.wrap ul li:nth-of-type(4){top: 0; left: 0; background:#66FFFF;transform:rotateX(180deg) translateZ(100px);}
+			.wrap ul li:nth-of-type(5){top: 100px; left: 0; background:pink;transform-origin: top; transform:rotateX(-90deg);}
+			.wrap ul li:nth-of-type(6){top: 0; left: 0; background:yellow;}
+			.wrap ul:hover{transform: rotateX(180deg);}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+	</body>
+</html>

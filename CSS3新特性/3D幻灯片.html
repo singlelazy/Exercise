@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css" id="css">
+			*{margin: 0; padding: 0; list-style-type: none;}
+			.wrap{width: 800px; margin: 100px auto;}
+			#picList{ width: 800px; height:500px; -webkit-perspective:800px;}
+			#picList li{width: 50px; height:500px;float: left; position: relative;transform-style: preserve-3d; transition: 2s; transform-origin: center center -250px;}
+			#picList li a{width: 100%; height: 100%; display: block;background-size: 50% 50%;position: absolute;left: 0; top: 0; }
+			#picList li a:nth-of-type(1){background:url("img/01-立春.jpg")no-repeat;top: 0;}
+			#picList li a:nth-of-type(2){background:url("img/02-雨水.jpg") no-repeat;top: -500px; transform-origin: bottom; transform: rotateX(90deg);}
+			#picList li a:nth-of-type(3){background:url("img/03-惊蛰.jpg") no-repeat;top: 0; transform: translateZ(-500px) rotateX(180deg); }
+			#picList li a:nth-of-type(4){background:url("img/04-春分.jpg") no-repeat;top: 500px; transform-origin: top; transform: rotateX(-90deg);}
+			#picList li a:nth-of-type(5){width:500px;background:azure; transform-origin: left;transform: rotateY(90deg);}
+			#picList li a:nth-of-type(6){width:500px;background:grey; transform-origin: left;transform: rotateY(90deg) translatez(50px);}
+			#btns{float: right;}
+			#btns li{float:left; width: 30px; height: 30px; margin:5px 10px; border-radius:50%; background: #000; font:20px/30px arial; color: #fff; text-align: center;}
+			#btns .active{background:orange;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul id="picList"></ul>
+			<ol id="btns">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ol>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oPicList=document.getElementById("picList");
+			var oCss=document.getElementById("css");
+			var aBtns=document.getElementById("btns").getElementsByTagName("li");
+			var iLiw=50;
+			var iLength=oPicList.offsetWidth/iLiw;
+			var sLi="";
+			var sCss="";
+			var iZindex=0;
+			var iNow=0;
+			
+			for(var i=0;i<iLength;i++){
+				i<iLength/2 ?iZindex++ :iZindex--;
+				sLi+='<li><a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a></li>'
+				sCss+="#picList li:nth-of-type("+(i+1)+"){z-index:"+iZindex+"}";
+				sCss+="#picList li:nth-of-type("+(i+1)+") a{background-position:-"+i*iLiw+"px 0}"
+			}
+			oPicList.innerHTML=sLi;
+			oCss.innerHTML+=sCss;
+			var aLi=oPicList.children;
+			for(var i=0;i<aBtns.length;i++){
+				aBtns[i].index=i;
+				aBtns[i].onclick=function(){
+					for(var j=0;j<aLi.length;j++){
+						aLi[j].style.transition="1s"+" "+j*50+"ms";
+						aLi[j].style.transform="rotateX(-"+90*this.index+"deg)";
+						console.log(1);
+//						aLi[j].setAttribute("style","transform:rotateX(-"+90*this.index+"deg);transition:1s"+" "+j*50+"ms")
+					}
+					aBtns[this.index].className="active";
+					aBtns[iNow].className="";
+					iNow=this.index;
+				}
+			}
+		}
+	</script>
+</html>

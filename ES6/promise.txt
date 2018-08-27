@@ -1,0 +1,25 @@
+﻿promise[[PromiseStatus]]状态
+	-pending:初始状态,既不是成功也不是失败
+	-fullfilled/resolve：操作成功
+	-reject:操作失败
+new	Promise(function(resolve,reject){
+	//resolve函数:调用该函数时,将PromiseStatus改为resolve
+	//reject函数:调用该函数时,将PromiseStatus改为reject
+})
+then() 方法返回一个  Promise 它最多需要有两个参数：Promise 的成功和失败情况的回调函数。
+then函数执行后会返回一个新的Promise对象	
+	-如果then没有传入处理函数,那么会返回一个继承了上一个处理状态的Promise对象
+	-如果then传入了处理函数,那么默认返回一个fullfilled/resolve状态的Promise对象
+	-如果then传入了处理函数，通过处理函数显示的return了一个新的对象，那么返回这个显示的Promise对象
+缺点：不容易解决中途退出
+	.catch 也会返回一个默认成功的Promise对象
+	可以捕获catch之前的Promise Chain中的任一错误(如果Promise Chain中的then没有处理的话)
+多任务处理
+	promise.all(iterable)包含多个Promise的迭代对象,比如数组,当所有任务都做完才开始执行
+	promise.race(iterable)包含多个Promise的迭代对象,比如数组,首个任务做完就开始执行
+promise.reject()/resolve()方法。返回一个reject状态的Promise对象
+传参
+	Promise.resolve(promise)	直接返回promise参数的Promise对象_
+	Promise.resolve(thenable)	返回thenable对象,一个包含then方法的对象_
+await等待后续promise执行，并拿到执行结果
+await必须在async函数里才能有用

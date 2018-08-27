@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css" id="css">
+			*{margin: 0; padding: 0; list-style-type: none;}
+			.box{width: 400px; margin:40px auto;position: relative;}
+			ul{border:2px solid #000; width: 400px; height: 400px; border-radius: 50%; }
+			ul li{ width: 2px; height:15px; background: #000; position: absolute; left: 200px; top: 0px;}
+			/*ul li:nth-last-of-type(2){transform: rotate(6deg); transform-origin: center 200px;}
+			ul li:nth-last-of-type(3){transform: rotate(12deg); transform-origin: center 200px;}
+			ul li:nth-last-of-type(4){transform: rotate(18deg); transform-origin: center 200px;}
+			ul li:nth-last-of-type(5){transform: rotate(24deg); transform-origin: center 200px;}
+			ul li:nth-last-of-type(6){transform: rotate(30deg); transform-origin: center 200px;}*/
+			/*ul li:nth-last-of-type(5n+1){width: 3px; height: 20px;}*/
+			.circle{width: 15px; height: 15px; border-radius: 50%;  background: #000; position: absolute; left: 200px; top:200px;}
+			.hour{width: 4px; height: 40px; background: #000; position: absolute; left: 205px; bottom: 195px; transform-origin:bottom;}
+			.min{width: 4px; height: 70px; background: #333; position: absolute; left: 205px; bottom: 195px; transform-origin:bottom;}
+			.sec{width: 4px; height: 100px; background: red; position: absolute; left: 205px; bottom: 195px; transform-origin:bottom;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="list"></ul>
+			<div class="hour"></div>
+			<div class="min"></div>
+			<div class="sec"></div>
+			<div class="circle"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementsByClassName("list")[0];
+			var oCss=document.getElementById("css");
+			var oHour=document.getElementsByClassName("hour")[0];
+			var oMin=document.getElementsByClassName("min")[0];
+			var oSec=document.getElementsByClassName("sec")[0];
+			var sLi="";
+			var sCss=""
+			for(var i=0;i<60;i++){
+				sLi+="<li></li>"
+				sCss+="ul li:nth-last-of-type("+(i+1)+"){transform: rotate("+i*6+"deg); transform-origin: center 200px;}"
+			}
+			oUl.innerHTML=sLi;
+			oCss.innerHTML+=sCss;
+			oCss.innerHTML+="ul li:nth-last-of-type(5n+1){width: 3px; height: 20px;}"
+//			setInterval(totime,1000)
+setInterval(function(){
+		toTime(oHour,oMin,oSec);
+	},1000)
+			function toTime(oHour,oMin,oSec){
+				var oDate=new Date();
+				var iSec=oDate.getSeconds()*360/60;
+				var iMin=oDate.getMinutes()+iSec/60;
+				var iHour=(oDate.getHours()%12)+iMin/60;
+//				oSec.style.WebkitTransform="rotate("+oDate.getSeconds()*6+"deg)";
+				oHour.setAttribute("style","transform:rotate("+iHour+"deg)")
+				oMin.setAttribute("style","transform:rotate("+iMin+"deg)")
+				oSec.setAttribute("style","transform:rotate("+iSec+"deg)")
+				console.log(oDate.getHours()+"时"+oDate.getMinutes()+"分"+oDate.getSeconds()+"秒");
+			}
+		}
+	</script>
+</html>
