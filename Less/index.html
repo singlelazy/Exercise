@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <script>
+    var pixRatio=1/window.devicePixelRatio;
+    var html=document.documentElement;
+    document.write(`<meta name="viewport" content="width=device-width,user-scalable=no,
+    initial-scale=${pixRatio},minimum-scale=${pixRatio},maximum-scale=${pixRatio}">`)
+    html.style.fontSize=html.clientWidth/25+"px";
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="backBtn">
+            <i></i>
+        </div>
+        <div class="logo"></div>
+        <div class="close"><span>退出</span><i></i></div>
+    </header>      
+</body>
+</html>

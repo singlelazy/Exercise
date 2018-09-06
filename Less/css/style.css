@@ -1,0 +1,67 @@
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+body {
+  font-size: 0.86666667rem;
+  font-family: "微软雅黑";
+  color: #738797;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #f00;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+header {
+  height: 2.93333333rem;
+  background: url("../img/bg.png") no-repeat;
+  background-size: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .backBtn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.46666667rem 0.33333333rem;
+  flex: 0 0 2rem;
+}
+header .backBtn i {
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/icon.png") no-repeat 0rem 0rem;
+  background-size: 2rem 26.66666667rem;
+  display: inline-block;
+}
+header .logo {
+  width: 7.03333333rem;
+  height: 2.93333333rem;
+  background: url("../img/logo.png") no-repeat;
+  background-size: 100%;
+}
+header .close {
+  color: #fff;
+  line-height: 2rem;
+  height: 2rem;
+  padding: 0.46666667rem 0.23333333rem;
+}
+header .close span {
+  vertical-align: top;
+}
+header .close i {
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/icon.png") no-repeat 0rem -2rem;
+  background-size: 2rem 26.66666667rem;
+  display: inline-block;
+}

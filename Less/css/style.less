@@ -1,0 +1,44 @@
+@import "globel";
+ 
+.backIcon(@x:0,@y:0){
+    width: 60/@rem;
+    height: 60/@rem;
+    background: url("../img/icon.png") no-repeat @x/@rem @y/@rem;
+    background-size: 60/@rem 800/@rem;
+    display: inline-block;
+}
+header{
+    height: 88/@rem;
+    background: url("../img/bg.png") no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    .backBtn{
+        width: 60/@rem;
+        height: 60/@rem;
+        padding:14/@rem 10/@rem;
+        flex: 0 0 60/@rem;
+        i{
+            .backIcon;
+        }
+    }
+    .logo{
+        width: 211/@rem;
+        height: 88/@rem;
+        background: url("../img/logo.png")no-repeat;
+        background-size: 100%;
+    }
+    .close{
+        color:#fff;
+        line-height: 60/@rem;
+        height: 60/@rem; 
+        padding:14/@rem 7/@rem; 
+        span{
+            vertical-align: top;
+        }
+        i{
+            .backIcon(0,-60);
+        }
+    }
+}
