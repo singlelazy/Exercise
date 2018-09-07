@@ -1,5 +1,5 @@
 @import "globel";
- 
+ /*公共样式*/
 .backIcon(@x:0,@y:0){
     width: 60/@rem;
     height: 60/@rem;
@@ -7,6 +7,12 @@
     background-size: 60/@rem 800/@rem;
     display: inline-block;
 }
+.fontMid(@size,@height){
+    height: @height/@rem;
+    font-size: @size/@rem;
+    line-height: @height/@rem;
+}
+
 header{
     height: 88/@rem;
     background: url("../img/bg.png") no-repeat;
@@ -42,3 +48,129 @@ header{
         }
     }
 }
+.userInfo{
+    height: 440/@rem;
+    background: url("../img/ingoBg.png") no-repeat;
+    background-size: 100%;
+    padding-top: 65/@rem;
+    text-align: center;
+    .userHeadImg{
+        width: 180/@rem;
+        height: 180/@rem;
+        border: 3/@rem solid #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 34/@rem;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .userName{
+        .fontMid(36, 58);
+        color: #fff;
+        span{
+            vertical-align: middle;
+        }
+        img{
+            width: 107/@rem;
+            height: 36/@rem;
+            vertical-align: middle;
+        }
+    }
+    .userReg{
+        .fontMid(22, 47);
+        opacity: 0.6;
+    }
+}
+.title{
+  .fontMid(32,100);
+  background-color: #fbfcff;
+  padding-left:50/@rem;
+  color: #9ca9b4;
+  font-weight: normal;
+}
+.menu{
+    height:374/@rem;
+    padding:2/@rem 0;
+    background-color: #e5ebf0;
+    display: grid;
+    grid-template-rows: repeat(2,186/@rem);
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 2/@rem;
+  
+    .item{
+      background-color: #fff;
+      text-align: center;
+  
+      i{
+        width:60/@rem;
+        height:60/@rem;
+        display: inline-block;
+        margin-top:40/@rem;
+        &.baseInfo{
+          .backIcon(0,-120);
+        }
+        &.userInf{
+          .backIcon(0,-180);
+        }
+        &.vipInfo{
+          .backIcon(0,-240);
+        }
+        &.order{
+          .backIcon(0,-300);
+        }
+        &.record{
+          .backIcon(0,-360);
+        }
+        &.device{
+          .backIcon(0,-420);
+        }
+        &.account{
+          .backIcon(0,-480);
+        }
+        &.more{
+          .backIcon(0,-540);
+        }
+      }
+      span{
+        display: inline-block;
+        line-height:57/@rem;
+        width:100%;
+      }
+    }
+  }
+  
+  .safe{
+    height: 186/@rem;
+    padding:2/@rem 0;
+    background-color: #e5ebf0;
+    display: flex;
+    text-align: center;
+  
+    .item{
+      height:186/@rem;
+      flex: 1;
+      background-color: #fff;
+      &:first-child{
+        margin-right:2/@rem;
+      }
+      i{
+        width:60/@rem;
+        height:60/@rem;
+        display: inline-block;
+        margin-top:40/@rem;
+        &.password{
+          .backIcon(0,-600);
+        }
+        &.email{
+          .backIcon(0,-660);
+        }
+      }
+      span{
+        display: inline-block;
+        line-height:57/@rem;
+        width:100%;
+      }
+    }
+  }
