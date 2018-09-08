@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus v-blur value="LOL">
+    </div>
+    <div id="app2">
+        <input type="text" v-focus v-blur value="i love lol">
+    </div>
+</body>
+<script>
+    //注册全局组件
+    Vue.directive('focus',function(el,binding){
+        console.log(el,binding)
+        // alert(el.value);
+    })
+    new Vue({
+        el:"#app"
+    })
+    new Vue({
+        el:"#app2",
+        directives:{
+            "blur":{
+                bind(el,binding){
+                    el.value=el.value.toUpperCase();
+                }
+            }
+        }
+    })
+</script>
+</html>
