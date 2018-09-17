@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+</body>
+<script>
+    $(function () {
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                "暂不支持定位"
+            }
+        }
+        function showPosition(position) {
+            h5Localtion = position.coords.latitude + "," + position.coords.longitude;
+            $.ajax({
+                url: "http://api.map.baidu.com/geoconv/v1/?coords=" + h5Localtion + "&from=1&to=5&ak=cusqFSEqXpA4vsg6myq6exmMUt7KwdXU",
+                dataType: "jsonp",
+                success(data) {
+                    var bdLocaltion = data.result[0].x + "," + data.result[0].y
+                    $.ajax({
+                        url: "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=" + bdLocaltion + "&output=json&pois=1&ak=cusqFSEqXpA4vsg6myq6exmMUt7KwdXU",
+                        dataType: "jsonp",
+                        success(data) {
+                            return data.result.formatted_address
+                        }
+                    })
+                }
+            })
+        }
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    })
+</script>
+
+</html>
